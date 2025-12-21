@@ -39,10 +39,12 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  const fetchSingleProduct = useCallback(async (url) => {
+  const fetchSingleProduct = useCallback(async (url, id) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
     try {
-      const { data: singleProduct } = await axios(url);
+      const { data: singleProduct } = await axios(
+        `/.netlify/functions/fetch-single-product?id=${id}`
+      );
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
