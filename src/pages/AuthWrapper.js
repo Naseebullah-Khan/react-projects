@@ -9,7 +9,7 @@ const AuthWrapper = ({ children }) => {
   if (isLoading) {
     return (
       <Wrapper>
-        <Loading />;
+        <Loading />
       </Wrapper>
     );
   }
@@ -22,7 +22,7 @@ const AuthWrapper = ({ children }) => {
     );
   }
 
-  return <>{children};</>;
+  return <>{children}</>;
 };
 
 const Wrapper = styled.section`
