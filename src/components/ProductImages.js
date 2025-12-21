@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const ProductImages = (props = {}) => {
-  const images = Object.values(props);
-  if (images.length < 1) {
-    images.push({ url: "" });
+  const image = Object.values(props);
+  if (image.length < 1) {
+    image.push({ url: "" });
   }
 
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setMainImage] = useState(image[0]);
 
   return (
     <Wrapper>
       <img src={mainImage.url} alt={mainImage.filename} className="main" />
       <div className="gallery">
-        {images.map((image, index) => {
+        {image.map((image, index) => {
           const { url, filename } = image;
           return (
             <img
@@ -21,7 +21,7 @@ const ProductImages = (props = {}) => {
               src={url}
               alt={filename}
               className={url === mainImage.url ? "active" : undefined}
-              onClick={() => setMainImage(images[index])}
+              onClick={() => setMainImage(image[index])}
             />
           );
         })}
