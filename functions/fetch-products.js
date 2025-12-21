@@ -1,5 +1,5 @@
 // domain/.netlify/functions/fetch-products
-export const product_list = [
+const product_list = [
   {
     id: "recZkNf2kwmdBcqd0",
     name: "accent chair",
