@@ -7,7 +7,7 @@ const ProductImages = (props = {}) => {
     image.push({ url: "" });
   }
 
-  const [mainImage, setMainImage] = useState(image[0]);
+  const [mainImage, setMainImage] = useState(image);
 
   return (
     <Wrapper>
