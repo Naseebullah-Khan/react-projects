@@ -1,4 +1,4 @@
-// domain/.netlify/functions/fetchProducts.js
+// domain/.netlify/functions/fetch-products
 exports.handler = async (event, context) => {
   const product_list = [
     {

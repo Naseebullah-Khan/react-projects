@@ -32,7 +32,7 @@ export const ProductsProvider = ({ children }) => {
   const fetchProducts = async (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
     try {
-      const { data } = await axios("/.netlify/functions/products");
+      const { data } = await axios("/.netlify/functions/fetch-products");
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR });
