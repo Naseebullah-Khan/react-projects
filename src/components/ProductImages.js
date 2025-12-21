@@ -11,16 +11,15 @@ const ProductImages = (props = {}) => {
 
   return (
     <Wrapper>
-      <img src={mainImage.url} alt={mainImage.filename} className="main" />
+      <img src={mainImage} alt={mainImage} className="main" />
       <div className="gallery">
         {image.map((image, index) => {
-          const { url, filename } = image;
           return (
             <img
               key={index}
-              src={url}
-              alt={filename}
-              className={url === mainImage.url ? "active" : undefined}
+              src={image}
+              alt={image}
+              className={image === mainImage ? "active" : undefined}
               onClick={() => setMainImage(image[index])}
             />
           );
