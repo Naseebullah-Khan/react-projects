@@ -47,7 +47,7 @@ const SingleProductPage = () => {
     reviews,
     id: sku,
     company,
-    images,
+    image,
   } = singleProduct;
   return (
     <Wrapper>
@@ -57,7 +57,7 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className="product-center">
-          <ProductImages {...images} />
+          <ProductImages {...image} />
           <div className="content">
             <h2>{name}</h2>
             <Stars data={{ stars, reviews }} />
