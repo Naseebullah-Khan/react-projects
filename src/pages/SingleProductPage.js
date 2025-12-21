@@ -57,7 +57,7 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className="product-center">
-          <ProductImages {...image} />
+          <ProductImages image={image} />
           <div className="content">
             <h2>{name}</h2>
             <Stars data={{ stars, reviews }} />
