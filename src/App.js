@@ -3,7 +3,7 @@ import Loading from "./Loading";
 import Tours from "./Tours";
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
-const url = "https://course-api.com/react-tours-project";
+const url = "/.netlify/functions/fetch-tours";
 function App() {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(false);
