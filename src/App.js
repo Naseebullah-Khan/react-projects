@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaAngleDoubleRight } from "react-icons/fa";
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
-const url = "https://course-api.com/react-tabs-project";
+const url = "/.netlify/functions/fetch-tabs";
 function App() {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -36,12 +36,11 @@ function App() {
       <div className="jobs-center">
         <div className="btn-container">
           {jobs.map((job, value) => {
-            
             return (
               <button
                 onClick={() => setIndex(value)}
                 key={job.id}
-                className={`job-btn ${value===index && "active-btn"}`}
+                className={`job-btn ${value === index && "active-btn"}`}
               >
                 {job.company}
               </button>
