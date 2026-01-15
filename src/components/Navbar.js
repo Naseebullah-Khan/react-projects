@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const handleLogoutUser = () => {
     setShowDropDown(() => false);
-    dispatch(logoutUser());
+    dispatch(logoutUser("Logged out successfully"));
   };
 
   return (
