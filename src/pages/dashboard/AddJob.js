@@ -34,7 +34,7 @@ const AddJob = () => {
     if (!isEditing) {
       dispatch(handleJobChange({ name: "jobLocation", value: user.location }));
     }
-  }, []);
+  }, [dispatch, isEditing, user.location]);
 
   const handleClear = () => {
     dispatch(clearValues({ position, company, jobLocation, jobType, status }));
