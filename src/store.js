@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userSlice from "./features/userSlice/userSlice";
+import userSlice from "./features/user/userSlice";
 import JobSlice from "./features/job/jobSlice";
 import AllJobsSlice from "./features/allJobs/allJobsSlice";
 

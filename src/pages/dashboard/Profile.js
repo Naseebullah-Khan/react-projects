@@ -3,7 +3,7 @@ import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { FormRow } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { updateUser } from "../../features/userSlice/userSlice";
+import { updateUser } from "../../features/user/userSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();

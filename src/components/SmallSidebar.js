@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSidebar } from "../features/userSlice/userSlice";
+import { toggleSidebar } from "../features/user/userSlice";
 import Wrapper from "../assets/wrappers/SmallSidebar";
 import { FaTimes } from "react-icons/fa";
 import Logo from "./Logo";

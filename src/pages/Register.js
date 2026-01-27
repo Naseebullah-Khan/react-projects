@@ -3,7 +3,7 @@ import Wrapper from "../assets/wrappers/RegisterPage";
 import { Logo, FormRow } from "../components";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, registerUser } from "../features/userSlice/userSlice";
+import { loginUser, registerUser } from "../features/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
@@ -81,9 +81,23 @@ const Register = () => {
           labelText="password"
           onChange={handleChange}
         />
-        <button type="submit" className="btn btn-block">
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
           {isLoading ? "Loading..." : values.isMember ? "Login" : "Sign up"}
         </button>
+        {values.isMember && (
+          <button
+            type="button"
+            className="btn btn-block btn-hipster"
+            disabled={isLoading}
+            onClick={() =>
+              dispatch(
+                loginUser({ email: "testUser@test.com", password: "secret" }),
+              )
+            }
+          >
+            {isLoading ? "Loading..." : "Demo"}
+          </button>
+        )}
         <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
 
