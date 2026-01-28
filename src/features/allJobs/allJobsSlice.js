@@ -6,6 +6,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: false,
   jobs: [],
+  stats: {},
+  monthlyApplications: [],
 };
 
 export const getAllJobs = createAsyncThunk(
@@ -15,6 +17,22 @@ export const getAllJobs = createAsyncThunk(
 
     try {
       const response = await customFetch.get(url);
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logoutUser());
+        return thunkAPI.rejectWithValue("Unauthorized Logging Out...");
+      }
+      return thunkAPI.rejectWithValue(error.response.data.msg);
+    }
+  },
+);
+
+export const showStats = createAsyncThunk(
+  "allJobs/showStats",
+  async (_, thunkAPI) => {
+    try {
+      const response = await customFetch.get("/jobs/stats");
       return response.data;
     } catch (error) {
       if (error.response.status === 401) {
@@ -47,6 +65,18 @@ const AllJobsSlice = createSlice({
         state.jobs = payload.jobs;
       })
       .addCase(getAllJobs.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        toast.error(payload);
+      })
+      .addCase(showStats.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(showStats.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.stats = payload.defaultStats;
+        state.monthlyApplications = payload.monthlyApplications;
+      })
+      .addCase(showStats.rejected, (state, { payload }) => {
         state.isLoading = false;
         toast.error(payload);
       });
