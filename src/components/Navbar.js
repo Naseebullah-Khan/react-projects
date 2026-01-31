@@ -2,7 +2,7 @@ import { FaAlignLeft, FaCaretDown, FaUserCircle } from "react-icons/fa";
 import Logo from "./Logo";
 import Wrapper from "../assets/wrappers/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser, toggleSidebar } from "../features/user/userSlice";
+import { clearStore, toggleSidebar } from "../features/user/userSlice";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const handleLogoutUser = () => {
     setShowDropDown(() => false);
-    dispatch(logoutUser("Logged out successfully"));
+    dispatch(clearStore("Logged out successfully"));
   };
 
   return (
