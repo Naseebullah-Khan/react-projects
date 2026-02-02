@@ -6,24 +6,41 @@ import {
   clearFilters,
   handleJobFilterChange,
 } from "../features/allJobs/allJobsSlice";
+import { useCallback, useMemo, useState } from "react";
 
 const SearchContainer = () => {
   const { statusOptions, jobTypeOptions } = useSelector((store) => store.job);
-  const { sortOptions, search, searchStatus, searchType, sort, isLoading } =
+  const { sortOptions, searchStatus, searchType, sort, isLoading } =
     useSelector((store) => store.allJobs);
   const dispatch = useDispatch();
+  const [localSearch, setLocalSearch] = useState("");
 
   const handleChange = (event) => {
-    if (isLoading) return;
     const name = event.target.name;
     const value = event.target.value;
     dispatch(handleJobFilterChange({ name, value }));
   };
 
+  const debounce = useCallback(() => {
+    let timeoutID;
+    return (e) => {
+      setLocalSearch(e.target.value);
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => {
+        dispatch(
+          handleJobFilterChange({ name: e.target.name, value: e.target.value }),
+        );
+      }, 1000);
+    };
+  }, [dispatch]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLocalSearch("");
     dispatch(clearFilters());
   };
+
+  const optimizedDebounce = useMemo(() => debounce(), [debounce]);
 
   return (
     <Wrapper>
@@ -33,8 +50,8 @@ const SearchContainer = () => {
           <FormRow
             type="text"
             name="search"
-            value={search}
-            onChange={handleChange}
+            value={localSearch}
+            onChange={optimizedDebounce}
           />
           <FormRowSelect
             type="text"
